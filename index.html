@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Muhammad Bilal Matloob — Electrical Engineer</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+<style>
+  /* ─── RESET & BASE ─────────────────────────────── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:        #080c14;
+    --bg2:       #0d1320;
+    --bg3:       #111827;
+    --surface:   #141d2e;
+    --border:    #1e2d45;
+    --cyan:      #00d4ff;
+    --cyan-dim:  #0096b7;
+    --cyan-glow: rgba(0,212,255,.15);
+    --amber:     #f59e0b;
+    --text:      #e2e8f0;
+    --muted:     #64748b;
+    --card-bg:   #0f1623;
+    --radius:    10px;
+    --nav-h:     64px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  ::selection { background: var(--cyan); color: #000; }
+
+  /* ─── SCROLLBAR ─────────────────────────────────── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--cyan-dim); border-radius: 3px; }
+
+  /* ─── UTILITY ───────────────────────────────────── */
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+  .section { padding: 100px 0; }
+  .tag {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    border: 1px solid var(--cyan-dim);
+    padding: 3px 12px;
+    border-radius: 2px;
+    margin-bottom: 20px;
+    background: rgba(0,212,255,.05);
+  }
+  .section-title {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    color: #fff;
+  }
+  .section-title span { color: var(--cyan); }
+  .section-sub { color: var(--muted); max-width: 520px; margin-bottom: 56px; }
+  hr.divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 0;
+  }
+
+  /* ─── NAV ───────────────────────────────────────── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    height: var(--nav-h);
+    display: flex;
+    align-items: center;
+    background: rgba(8,12,20,.85);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .nav-logo {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-right: 50px;
+  }
+  .nav-logo .dot { color: var(--cyan); }
+  .nav-logo-icon {
+    width: 36px; height: 36px;
+    background: linear-gradient(135deg, var(--cyan), #0096b7);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: #000;
+    font-size: 15px;
+    box-shadow: 0 0 0 2px rgba(0,212,255,.25);
+  }
+  .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+  .nav-links a {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: .04em;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: var(--radius);
+    transition: color .2s, background .2s;
+    position: relative;
+  }
+  .nav-links a:hover, .nav-links a.active {
+    color: var(--cyan);
+    background: var(--cyan-glow);
+  }
+
+  /* hamburger */
+  .hamburger {
+    display: none;
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 8px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  @media(max-width:700px) {
+    .hamburger { display: block; }
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: var(--nav-h);
+      left: 0; right: 0;
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 0;
+      gap: 40px;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links a { width: 100%; padding: 12px 24px; border-radius: 0; }
+  }
+
+  /* ─── HERO ──────────────────────────────────────── */
+  #home {
+    min-height: calc(100vh - var(--nav-h));
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,212,255,.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,212,255,.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, #000 30%, transparent 100%);
+  }
+  .hero-glow {
+    position: absolute;
+    top: 10%; left: 50%;
+    transform: translateX(-50%);
+    width: 600px; height: 350px;
+    background: radial-gradient(ellipse, rgba(0,212,255,.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 700px; }
+  .hero-eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 36px; height: 1px;
+    background: var(--cyan);
+  }
+  .hero-name {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    font-weight: 800;
+    line-height: 1.05;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+  .hero-name .line2 { color: var(--cyan); }
+  .hero-title {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(1rem, 2.5vw, 1.15rem);
+    font-weight: 500;
+    color: var(--muted);
+    margin-bottom: 28px;
+    letter-spacing: .01em;
+  }
+  .hero-desc {
+    color: #94a3b8;
+    font-size: 15px;
+    max-width: 520px;
+    margin-bottom: 44px;
+    line-height: 1.8;
+  }
+  
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 26px;
+    border-radius: var(--radius);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all .2s;
+    border: none;
+  }
+  .btn-primary {
+    background: var(--cyan);
+    color: #000;
+    font-weight: 700;
+  }
+  .btn-primary:hover { background: #00b8dc; box-shadow: 0 0 24px rgba(0,212,255,.4); }
+  .btn-outline {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+  .btn-outline:hover { border-color: var(--cyan-dim); color: var(--cyan); background: var(--cyan-glow); }
+
+  /* ─── EDUCATION ─────────────────────────────────── */
+  #education { background: var(--bg2); }
+  .edu-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 40px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 32px;
+    align-items: start;
+    transition: border-color .3s, box-shadow .3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .edu-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: linear-gradient(180deg, var(--cyan) 0%, transparent 100%);
+  }
+  .edu-card:hover { border-color: var(--cyan-dim); box-shadow: 0 0 40px rgba(0,212,255,.07); }
+  .edu-icon-wrap {
+    width: 64px; height: 64px;
+    background: linear-gradient(135deg, rgba(0,212,255,.15), rgba(0,212,255,.04));
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px;
+    color: var(--cyan);
+  }
+  .edu-degree {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+  .edu-school {
+    font-size: 15px;
+    color: var(--cyan);
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+  .edu-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-bottom: 18px;
+  }
+  .edu-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--muted);
+    font-family: 'Space Mono', monospace;
+  }
+  .edu-meta-item i { color: var(--cyan); }
+  .edu-desc { color: #94a3b8; font-size: 14px; line-height: 1.8; }
+  .edu-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 18px;
+  }
+  .skill-chip {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: #94a3b8;
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-family: 'Space Mono', monospace;
+  }
+
+  @media(max-width:600px) {
+    .edu-card { grid-template-columns: 1fr; gap: 20px; padding: 24px 20px; }
+  }
+
+  /* ─── MAKTAB ────────────────────────────────────── */
+  #maktab { background: var(--bg); }
+  .week-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 18px;
+  }
+  .week-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    transition: border-color .25s, transform .2s, box-shadow .25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .week-card:hover {
+    border-color: var(--cyan-dim);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(0,212,255,.08);
+  }
+  .week-card::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 80px; height: 80px;
+    background: radial-gradient(circle at top right, rgba(0,212,255,.08), transparent 70%);
+  }
+  .week-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    margin-bottom: 6px;
+  }
+  .week-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #fff;
+    margin-bottom: 18px;
+  }
+  .week-links { display: flex; flex-direction: column; gap: 10px; }
+  .week-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    padding: 9px 14px;
+    border-radius: 8px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: #94a3b8;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all .2s;
+  }
+  .week-link:hover {
+    background: rgba(0,212,255,.08);
+    border-color: var(--cyan-dim);
+    color: var(--cyan);
+  }
+  .week-link i { font-size: 13px; width: 16px; text-align: center; }
+  .week-link .link-type {
+    margin-left: auto;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--muted);
+  }
+  .week-link:hover .link-type { color: var(--cyan-dim); }
+
+  /* ─── INTELLECTUAL PROPERTIES ───────────────────── */
+  #ip { background: var(--bg2); }
+  .ip-placeholder {
+    border: 1px dashed var(--border);
+    border-radius: 14px;
+    padding: 72px 40px;
+    text-align: center;
+    background: var(--card-bg);
+    position: relative;
+    overflow: hidden;
+  }
+  .ip-placeholder::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 50% 0%, rgba(0,212,255,.07), transparent),
+      radial-gradient(ellipse 40% 40% at 80% 100%, rgba(245,158,11,.04), transparent);
+    pointer-events: none;
+  }
+  .ip-icon {
+    width: 80px; height: 80px;
+    background: linear-gradient(135deg, rgba(0,212,255,.12), rgba(245,158,11,.06));
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 30px;
+    color: var(--cyan);
+    margin: 0 auto 28px;
+    position: relative;
+  }
+  .ip-icon::after {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    border: 1px dashed rgba(0,212,255,.25);
+    animation: spin 20s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .ip-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(245,158,11,.1);
+    border: 1px solid rgba(245,158,11,.3);
+    color: var(--amber);
+    font-size: 11px;
+    font-family: 'Space Mono', monospace;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 2px;
+    margin-bottom: 24px;
+  }
+  .ip-heading {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 18px;
+  }
+  .ip-text {
+    max-width: 540px;
+    margin: 0 auto 36px;
+    color: #94a3b8;
+    font-size: 15px;
+    line-height: 1.8;
+  }
+  .ip-progress {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .ip-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--amber);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: .4; transform: scale(.7); }
+  }
+  .ip-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 32px;
+  }
+  .ip-tag {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .ip-tag i { color: var(--cyan); }
+
+  /* ─── IP PROJECT CARDS ───────────────────────────── */
+  .ip-placeholder {
+    text-align: center;
+    margin-bottom: 40px;
+    background: none;
+    border: none;
+    padding: 0;
+  }
+  .ip-placeholder::before { display: none; }
+
+  /* private button toggle — pure CSS */
+  .ip-private-check { display: none; }
+  .ip-private-trigger { cursor: pointer; }
+  .ip-private-msg {
+    display: none;
+    align-items: center;
+    gap: 7px;
+    color: var(--amber);
+    font-size: 12px;
+    font-family: 'Space Mono', monospace;
+    letter-spacing: .04em;
+  }
+  .ip-private-check:checked ~ .ip-btn-label { display: none; }
+  .ip-private-check:checked ~ .ip-private-msg { display: inline-flex; }
+
+  .ip-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  .ip-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: border-color .25s, transform .2s, box-shadow .25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .ip-card::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 90px; height: 90px;
+    background: radial-gradient(circle at top right, rgba(0,212,255,.07), transparent 70%);
+    pointer-events: none;
+  }
+  .ip-card:hover {
+    border-color: var(--cyan-dim);
+    transform: translateY(-4px);
+    box-shadow: 0 14px 40px rgba(0,212,255,.09);
+  }
+  .ip-card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .ip-card-icon {
+    width: 40px; height: 40px;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, rgba(0,212,255,.15), rgba(0,212,255,.04));
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    color: var(--cyan);
+  }
+  .ip-card-type {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    background: rgba(0,212,255,.07);
+    border: 1px solid rgba(0,212,255,.18);
+    padding: 3px 10px;
+    border-radius: 2px;
+  }
+  .ip-card-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.35;
+  }
+  .ip-card-desc {
+    color: #94a3b8;
+    font-size: 13.5px;
+    line-height: 1.75;
+    flex: 1;
+  }
+  .ip-card-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: auto;
+    padding: 9px 18px;
+    border-radius: 8px;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all .2s;
+    align-self: flex-start;
+  }
+  .ip-card-btn:hover {
+    border-color: var(--cyan-dim);
+    color: var(--cyan);
+    background: var(--cyan-glow);
+  }
+  .ip-card-btn i { font-size: 14px; }
+
+  /* ─── FOOTER ─────────────────────────────────────── */
+  footer {
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+    padding: 40px 0;
+    text-align: center;
+  }
+  .footer-name {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+  .footer-sub { color: var(--muted); font-size: 13px; font-family: 'Space Mono', monospace; }
+  .footer-sep {
+    width: 48px; height: 2px;
+    background: var(--cyan);
+    margin: 20px auto;
+    border-radius: 1px;
+  }
+  .footer-copy { color: var(--muted); font-size: 12px; }
+
+  /* ─── FADE-IN ANIMATION ──────────────────────────── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity .6s ease, transform .6s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════ NAV -->
+<nav>
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#home" class="nav-logo" aria-label="Muhammad Bilal Matloob">
+        <div class="nav-logo-icon"><i class="fa-solid fa-user"></i></div>
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#maktab">Maktab</a></li>
+        <li><a href="#ip">Intellectual Properties</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════ HERO -->
+<section id="home" class="section">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-eyebrow">Electrical Engineer</div>
+      <h1 class="hero-name">
+        Muhammad<br>
+        <span class="line2">Bilal Matloob</span>
+      </h1>
+      <p class="hero-title">B.Sc. Electrical Engineering<br>University of Engineering and Technology, Lahore<br>November 2021 - November 2025</p>
+      
+      <p class="hero-desc">
+        Specialized in Computer Architecture, Digital Systems, Image Processing,
+        Digital Signal Processing, and RISC-V ISA based cores.
+      </p>
+      
+      <div class="hero-cta">
+        <a href="#maktab" class="btn btn-primary"><i class="fa-solid fa-book-open"></i> View Lectures</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- ═══════════════════════════════════════════════ MAKTAB -->
+<section id="maktab" class="section">
+  <div class="container">
+    <div class="reveal">
+      <div class="tag"><i class="fa-solid fa-book"></i> &nbsp;Lecture Repository</div>
+      <h2 class="section-title">Maktab — <span>Weekly Lectures</span></h2>
+      <p class="section-sub">
+        Access handouts, lab sheets, and assignments for each week of the course.
+        Click any resource to open the corresponding PDF.
+      </p>
+    </div>
+
+    <div class="week-grid" id="weekGrid">
+      <!-- Generated by JS below -->
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- ═══════════════════════════════════════════════ INTELLECTUAL PROPERTIES -->
+<section id="ip" class="section">
+  <div class="container">
+    <div class="reveal">
+      <div class="tag"><i class="fa-solid fa-lock"></i> &nbsp;Research &amp; Innovation</div>
+      <h2 class="section-title">Intellectual <span>Properties</span></h2>
+      <p class="section-sub">
+        Research Projects (Private repositories)
+      </p>
+    </div>
+
+    <div class="ip-placeholder reveal">
+      <div class="ip-icon"><i class="fa-solid fa-shield-halved"></i></div>
+      <div class="ip-badge"><i class="fa-solid fa-clock"></i> Not for Public View</div>
+      <h3 class="ip-heading">Access Restricted</h3>
+      <p class="ip-text">
+        These research repositories and projects are IPs locked by the owner and are restricted for public access. Only owner could grant permission to access them.
+      </p>
+    </div>
+
+    <div class="ip-grid">
+
+      <div class="ip-card reveal">
+        <div class="ip-card-header">
+          <div class="ip-card-icon"><i class="fa-solid fa-microchip"></i></div>
+          <span class="ip-card-type">Digital System Design</span>
+        </div>
+        <h3 class="ip-card-title">Booth Multiplier (Parameterized)</h3>
+        <p class="ip-card-desc">Implemented booth's algorithm in SystemVerilog for n-bit multiplication</p>
+        <label class="ip-card-btn ip-private-trigger">
+          <input type="checkbox" class="ip-private-check">
+          <span class="ip-btn-label"><i class="fa-brands fa-github"></i> View on GitHub</span>
+          <span class="ip-private-msg"><i class="fa-solid fa-lock"></i> This repository is private</span>
+        </label>
+      </div>
+
+      <div class="ip-card reveal">
+        <div class="ip-card-header">
+          <div class="ip-card-icon"><i class="fa-solid fa-microchip"></i></div>
+          <span class="ip-card-type">Digital Signal Processing</span>
+        </div>
+        <h3 class="ip-card-title">Decimators</h3>
+        <p class="ip-card-desc">Implemented hardware design of both hardcoded (prototype) and parametrized decimators to reduce the sampling size of an input signal by a certain factor M</p>
+        <label class="ip-card-btn ip-private-trigger">
+          <input type="checkbox" class="ip-private-check">
+          <span class="ip-btn-label"><i class="fa-brands fa-github"></i> View on GitHub</span>
+          <span class="ip-private-msg"><i class="fa-solid fa-lock"></i> This repository is private</span>
+        </label>
+      </div>
+
+<div class="ip-card reveal">
+        <div class="ip-card-header">
+          <div class="ip-card-icon"><i class="fa-solid fa-microchip"></i></div>
+          <span class="ip-card-type">Digital Signal Processing</span>
+        </div>
+        <h3 class="ip-card-title">Interpolators</h3>
+        <p class="ip-card-desc">Implemented hardware design of both hardcoded (prototype) and parametrized interpolators to increase the sampling size of an input signal by a certain factor M</p>
+        <label class="ip-card-btn ip-private-trigger">
+          <input type="checkbox" class="ip-private-check">
+          <span class="ip-btn-label"><i class="fa-brands fa-github"></i> View on GitHub</span>
+          <span class="ip-private-msg"><i class="fa-solid fa-lock"></i> This repository is private</span>
+        </label>
+      </div>
+
+<div class="ip-card reveal">
+        <div class="ip-card-header">
+          <div class="ip-card-icon"><i class="fa-solid fa-microchip"></i></div>
+          <span class="ip-card-type">Digital Signal Processing</span>
+        </div>
+        <h3 class="ip-card-title">FIR filter (Parametrized)</h3>
+        <p class="ip-card-desc">Implemented hardware design of finite impulse response filter</p>
+        <label class="ip-card-btn ip-private-trigger">
+          <input type="checkbox" class="ip-private-check">
+          <span class="ip-btn-label"><i class="fa-brands fa-github"></i> View on GitHub</span>
+          <span class="ip-private-msg"><i class="fa-solid fa-lock"></i> This repository is private</span>
+        </label>
+      </div>
+
+<div class="ip-card reveal">
+        <div class="ip-card-header">
+          <div class="ip-card-icon"><i class="fa-solid fa-microchip"></i></div>
+          <span class="ip-card-type">Digital Signal Processing</span>
+        </div>
+        <h3 class="ip-card-title">IIR filter (Parametrized)</h3>
+        <p class="ip-card-desc">Implemented hardware design of infinite impulse response filter</p>
+        <label class="ip-card-btn ip-private-trigger">
+          <input type="checkbox" class="ip-private-check">
+          <span class="ip-btn-label"><i class="fa-brands fa-github"></i> View on GitHub</span>
+          <span class="ip-private-msg"><i class="fa-solid fa-lock"></i> This repository is private</span>
+        </label>
+      </div>
+
+
+      
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-name">Muhammad Bilal Matloob</div>
+    <div class="footer-sub">B.Sc. Electrical Engineering &nbsp;·&nbsp; UET Lahore &nbsp;·&nbsp; 2021–2025</div>
+    <div class="footer-sep"></div>
+    <div class="footer-copy">&copy; 2025 Muhammad Bilal Matloob. All rights reserved.</div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════ JS -->
+<script>
+  /* ── Week Grid Generation ── */
+  const weekGrid = document.getElementById('weekGrid');
+  const totalWeeks = 13;
+
+  for (let w = 1; w <= totalWeeks; w++) {
+    const n   = String(w).padStart(2, '0');
+    const dir = `week${n}`;
+
+    const resources = [
+      { label: 'Handouts',   icon: 'fa-file-pdf',     file: `handouts${n}.pdf`, type: 'PDF' },
+      { label: 'Lab Sheet',  icon: 'fa-flask',         file: `lab${n}.pdf`,      type: 'PDF' },
+      { label: 'Homework',   icon: 'fa-pencil-ruler',  file: `hw${n}.pdf`,       type: 'PDF' },
+    ];
+
+    const linksHTML = resources.map(r => `
+      <a href="${dir}/${r.file}" target="_blank" rel="noopener" class="week-link">
+        <i class="fa-solid ${r.icon}"></i>
+        ${r.label}
+        <span class="link-type">${r.type}</span>
+      </a>
+    `).join('');
+
+    const card = document.createElement('div');
+    card.className = 'week-card reveal';
+    card.innerHTML = `
+      <div class="week-label">Week ${n}</div>
+      <div class="week-title">Lecture ${w} &mdash; Session ${w}</div>
+      <div class="week-links">${linksHTML}</div>
+    `;
+    weekGrid.appendChild(card);
+  }
+
+  /* ── Scroll-reveal ── */
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 60);
+        revealObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  /* ── Active nav on scroll ── */
+  const sections = document.querySelectorAll('section[id]');
+  const navAs    = document.querySelectorAll('.nav-links a');
+
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navAs.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+
+  sections.forEach(s => sectionObserver.observe(s));
+
+  /* ── Hamburger ── */
+  document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('nav-links').classList.toggle('open');
+  });
+
+  /* Close menu on link click (mobile) */
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => document.getElementById('nav-links').classList.remove('open'));
+  });
+</script>
+</body>
+</html>
